@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+
+body {
+    background-color: #ffe6f2;
+    font-family: 'Patrick Hand', cursive;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.apology-container {
+    padding: 20px;
+    margin-top: 50px;
+}
+
+h1 {
+    color: #ff66b3;
+    font-size: 3em;
+    margin-bottom: 20px;
+}
+
+p {
+    color: #ff3385;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.apology-image {
+    width: 250px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.accept-button, .reject-button {
+    padding: 15px 30px;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.accept-button {
+    background-color: #66ff66;
+    color: white;
+}
+
+.reject-button {
+    background-color: #ff6666;
+    color: white;
+}
+
+.accept-button:hover {
+    transform: scale(1.1);
+    background-color: #33cc33;
+}
+
+.reject-button:hover {
+    transform: scale(1.1);
+    background-color: #cc0000;
+}
