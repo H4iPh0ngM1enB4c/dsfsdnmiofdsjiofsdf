@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lời Xin Lỗi</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="apology-container">
+        <h1>Chị iu ơi choo em xin lỗi nhóoo 😭</h1>
+        <img src="assets/cute.gif" alt="Cute gif" class="apology-image">
+        <p>Chị hong chọn hoặc thoát là tha lỗi cho em đó</p>
+        <div class="button-container">
+            <button class="accept-button">Em chấp nhận</button>
+            <button class="reject-button">Không bao giờ</button>
+        </div>
+    </div>
+    <script>
+        document.querySelector('.reject-button').addEventListener('click', function() {
+            const acceptButton = document.querySelector('.accept-button');
+            const rejectButton = document.querySelector('.reject-button');
+
+            // Increase the size of the accept button
+            const currentScale = parseFloat(getComputedStyle(acceptButton).transform.split(',')[0].replace('matrix(', '')) || 1;
+            acceptButton.style.transform = `scale(${currentScale + 0.2})`;
+            acceptButton.style.transition = 'transform 0.3s';
+
+            // Decrease the size of the reject button
+            const currentRejectScale = parseFloat(getComputedStyle(rejectButton).transform.split(',')[0].replace('matrix(', '')) || 1;
+            rejectButton.style.transform = `scale(${currentRejectScale - 0.2})`;
+            rejectButton.style.transition = 'transform 0.3s';
+
+            // Hide the reject button if it becomes too small
+            if (currentRejectScale - 0.2 <= 0.5) {
+                rejectButton.style.display = 'none';
+            }
+        });
+
+        // Replace the alert with a custom modal
+        const modal = document.createElement('div');
+        modal.style.position = 'fixed';
+        modal.style.top = '50%';
+        modal.style.left = '50%';
+        modal.style.transform = 'translate(-50%, -50%)';
+        modal.style.backgroundColor = '#fff';
+        modal.style.padding = '20px';
+        modal.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.2)';
+        modal.style.borderRadius = '10px';
+        modal.style.textAlign = 'center';
+        modal.style.zIndex = '1000';
+        modal.innerHTML = `
+            <p style="font-size: 1.2em; color: #ff3385;">Cảm ơn chị đã tha lỗi cho emmm :3</p>
+            <button id="close-modal" style="padding: 10px 20px; background-color: #66ff66; color: white; border: none; border-radius: 5px; cursor: pointer;">OK</button>
+        `;
+        modal.style.display = 'none';
+        document.body.appendChild(modal);
+
+        const overlay = document.createElement('div');
+        overlay.style.position = 'fixed';
+        overlay.style.top = '0';
+        overlay.style.left = '0';
+        overlay.style.width = '100%';
+        overlay.style.height = '100%';
+        overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+        overlay.style.zIndex = '999';
+        overlay.style.display = 'none';
+        document.body.appendChild(overlay);
+
+        // Show modal on accept button click
+        document.querySelector('.accept-button').addEventListener('click', function() {
+            modal.style.display = 'block';
+            overlay.style.display = 'block';
+        });
+
+        // Close modal on button click
+        document.getElementById('close-modal').addEventListener('click', function() {
+            modal.style.display = 'none';
+            overlay.style.display = 'none';
+        });
+
+        // Add Hello Kitty image to the corner of the screen
+        const kittyCorner = document.createElement('img');
+        kittyCorner.src = 'assets/hello2.png';
+        kittyCorner.alt = 'Hello Kitty';
+        kittyCorner.style.position = 'fixed';
+        kittyCorner.style.bottom = '10px';
+        kittyCorner.style.right = '10px';
+        kittyCorner.style.width = '100px';
+        kittyCorner.style.height = 'auto';
+        kittyCorner.style.zIndex = '1001';
+        document.body.appendChild(kittyCorner);
+    </script>
+</body>
+</html>
